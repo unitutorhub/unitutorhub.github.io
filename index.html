@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UniTutorHub — Students helping students (GCU)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+<header class="container">
+  <nav class="nav">
+    <div class="brand">🎓 UniTutorHub</div>
+    <div class="nav-right">
+      <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌓</button>
+      <a class="btn" href="#apply">Become a Tutor</a>
+      <a class="btn primary" href="#find">Find a Tutor</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="hero-card">
+      <h1>Peer tutoring by students, for students — starting at <span class="underline">GCU</span></h1>
+      <p class="lead">Search by module, message a tutor, and book a Zoom/Teams session. Cheap, friendly, and relatable.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#find">Find a Tutor</a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+      <div class="badges">
+        <span class="chip">GCU-only (soft launch)</span>
+        <span class="chip">Barter friendly (clothes/notes/food)</span>
+        <span class="chip">Manual review & verification</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="container section">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="bubble">
+        <h3>1) Search</h3>
+        <p>Browse tutors by <strong>degree, year, and module</strong>.</p>
+      </div>
+      <div class="bubble">
+        <h3>2) Message & book</h3>
+        <p>Use our form to request times. You can <strong>pay or barter</strong>—your call.</p>
+      </div>
+      <div class="bubble">
+        <h3>3) Meet online</h3>
+        <p>Zoom or Teams. After the session, leave a quick <strong>review</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND TUTORS -->
+  <section id="find" class="container section">
+    <h2>Find a Tutor</h2>
+    <form id="filterForm" class="card form-row" aria-label="Filter tutors">
+      <input id="q" type="search" placeholder="Search module e.g. M1IAD: Introduction to Algorithms" />
+      <select id="degree">
+        <option value="">All degrees</option>
+        <option>Computing Science</option>
+        <option>Biomedical Science</option>
+        <option>Business Management</option>
+      </select>
+      <button class="btn" type="submit">Search</button>
+    </form>
+
+    <div id="tutorGrid" class="grid">
+      <!-- Example tutor cards (edit these to real people) -->
+      <article class="card tutor" data-degree="Computing Science" data-modules="M1IAD, Data Structures, Web Dev">
+        <header class="tutor-head">
+          <div>
+            <h3>James T. — CS Year 3</h3>
+            <p class="muted">Modules: M1IAD, Data Structures, Web Dev</p>
+          </div>
+          <span class="badge">Verified GCU</span>
+        </header>
+        <p>Friendly, patient, and big on whiteboard explanations. Can do project walk-throughs.</p>
+        <div class="pillrow">
+          <span class="pill">£12–£18/hr</span>
+          <span class="pill">Barter ok</span>
+          <span class="pill">Zoom • Teams</span>
+        </div>
+        <div class="actions">
+          <a class="btn small" href="#book" data-tutor="James T.">Request session</a>
+          <button class="btn small ghost" data-reviews-open="James T.">See reviews</button>
+        </div>
+      </article>
+
+      <article class="card tutor" data-degree="Biomedical Science" data-modules="Anatomy, Physiology, Lab Skills">
+        <header class="tutor-head">
+          <div>
+            <h3>Malaika A. — Biomed Year 2</h3>
+            <p class="muted">Modules: Anatomy, Physiology, Lab Skills</p>
+          </div>
+          <span class="badge">Verified GCU</span>
+        </header>
+        <p>Notes, flashcards, and exam tips. Happy to trade for clothes/meal prep.</p>
+        <div class="pillrow">
+          <span class="pill">£10–£15/hr</span>
+          <span class="pill">Barter ok</span>
+          <span class="pill">Zoom • Teams</span>
+        </div>
+        <div class="actions">
+          <a class="btn small" href="#book" data-tutor="Malaika A.">Request session</a>
+          <button class="btn small ghost" data-reviews-open="Malaika A.">See reviews</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BOOK / EXCHANGE FORM -->
+  <section id="book" class="container section">
+    <h2>Request a session (pay or exchange)</h2>
+    <form id="requestForm" class="card">
+      <div class="form-grid">
+        <input required name="name" placeholder="Your name" />
+        <input required name="email" type="email" placeholder="Your email" />
+        <input name="module" placeholder="Module (e.g., M1IAD)" />
+        <input name="tutor" id="tutorField" placeholder="Tutor (optional)" />
+        <select name="mode">
+          <option>Zoom</option>
+          <option>Microsoft Teams</option>
+        </select>
+        <select name="payment">
+          <option>Pay (arrange directly)</option>
+          <option>Exchange clothing</option>
+          <option>Exchange food</option>
+          <option>Exchange notes/resources</option>
+        </select>
+        <input name="times" placeholder="Preferred days/times" />
+        <textarea name="notes" rows="3" placeholder="What do you need help with?"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Send request</button>
+        <span id="requestMsg" class="muted"></span>
+      </div>
+      <p class="tiny muted">For now, requests are emailed to the team. We manually connect you with a tutor. Simple + safe.</p>
+    </form>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="container section">
+    <h2>Reviews</h2>
+    <form id="reviewForm" class="card">
+      <div class="form-grid">
+        <input required name="tutor" placeholder="Tutor name" />
+        <input required name="module" placeholder="Module" />
+        <select required name="rating">
+          <option value="">Rating</option>
+          <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+        </select>
+        <textarea required name="text" rows="3" placeholder="What went well? Anything to improve?"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn" type="submit">Add review</button>
+      </div>
+    </form>
+    <div id="reviews" class="stack"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container section">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details>
+        <summary>Is it free?</summary>
+        <p>For Year 1 the platform is free. Tutors may charge, but you can also barter.</p>
+      </details>
+      <details>
+        <summary>How do payments work?</summary>
+        <p>Arrange directly with the tutor for now (cash, bank, Revolut, etc.). Stripe will be added later.</p>
+      </details>
+      <details>
+        <summary>Is it safe?</summary>
+        <p>We verify GCU status manually to start, collect reviews, and remove any bad actors fast.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>Not yet. You submit a request and we connect you. Accounts come later with Supabase/Firebase.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section id="apply" class="container section">
+    <h2>Become a Tutor</h2>
+    <div class="card">
+      <p>Got good grades in a module? Flexible hours, you set your rate, barter allowed. Fill this and we’ll list your profile:</p>
+      <a class="btn primary" href="https://forms.gle/your-tutor-form" target="_blank" rel="noopener">Apply via Google Form</a>
+      <p class="tiny muted">We verify you’re a current/recent GCU student before listing.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="container footer">
+  <div>© <span id="year"></span> UniTutorHub.com • Built by students at GCU</div>
+  <div class="links">
+    <a href="#" id="openGuidelines">Community Guidelines</a>
+    <a href="https://discord.gg/your-invite" target="_blank" rel="noopener">Discord</a>
+    <a href="mailto:hello@unitutorhub.com">Contact</a>
+  </div>
+</footer>
+
+<!-- Modal (Guidelines) -->
+<dialog id="guidelines">
+  <h3>Community Guidelines</h3>
+  <ul>
+    <li>Be kind, be clear, be on time.</li>
+    <li>No plagiarism; help learning, not doing the work for someone.</li>
+    <li>Keep arrangements (payment or barter) transparent.</li>
+  </ul>
+  <button class="btn" id="closeGuidelines">Close</button>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>

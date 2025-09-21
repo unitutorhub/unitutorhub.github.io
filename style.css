@@ -1,0 +1,97 @@
+:root{
+  --bg: #f7fafc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --brand: #265d97;           /* calm study blue */
+  --brand-2: #6aa4da;         /* accent */
+  --ring: rgba(38,93,151,.25);
+}
+:root.dark{
+  --bg: #0b1020;
+  --panel: #0f172a;
+  --text: #e6eef8;
+  --muted: #99a7bf;
+  --brand: #6aa4da;
+  --brand-2: #9fc3ea;
+  --ring: rgba(154,197,243,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+}
+
+/* CENTER EVERYTHING: full-width until max, then perfectly centered */
+.container{
+  max-width: 1200px;          /* cap the width on large screens */
+  width: 100%;                /* take full width up to the cap */
+  margin-left: auto;          /* center */
+  margin-right: auto;         /* center */
+  padding: 0 20px;            /* comfy side padding */
+}
+
+/* --- rest is your original styles (with tiny spacing buffs) --- */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font-weight:700}
+.nav-right{display:flex;gap:8px;align-items:center}
+
+.btn{border:1px solid var(--brand); color:var(--brand); background:transparent; padding:10px 14px; border-radius:10px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px}
+.btn:hover{box-shadow:0 0 0 3px var(--ring)}
+.btn.primary{background:var(--brand); color:#fff}
+.btn.ghost{border-color:transparent; color:var(--muted)}
+.btn.small{padding:6px 10px; font-size:14px}
+
+.section{margin:56px 0} /* a touch more breathing room */
+.card{background:var(--panel); border:1px solid rgba(0,0,0,.05); border-radius:14px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.04)}
+.hero{padding:28px 0}
+.hero-card{background:linear-gradient(180deg, rgba(38,93,151,.08), transparent); border:1px solid rgba(38,93,151,.12); padding:32px; border-radius:18px}
+h1{line-height:1.2; font-size:clamp(26px, 4vw, 38px); margin:0 0 12px}
+.lead{color:var(--muted); margin:0 0 18px}
+.underline{box-shadow:inset 0 -10px 0 var(--brand-2)}
+.cta-row{display:flex; gap:10px; flex-wrap:wrap}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+.chip{background:var(--panel); border:1px solid rgba(0,0,0,.06); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
+
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+.bubble{background:var(--panel); border:1px dashed var(--brand-2); padding:14px; border-radius:16px}
+
+.form-row{display:grid; grid-template-columns:1fr 220px auto; gap:10px}
+.form-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px}
+input, select, textarea{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.15); background:var(--panel); color:var(--text);
+}
+input:focus, select:focus, textarea:focus{outline:none; box-shadow:0 0 0 3px var(--ring)}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px}
+.tutor-head{display:flex; align-items:start; justify-content:space-between; gap:8px}
+.badge{background:rgba(38,93,151,.12); color:var(--brand); padding:4px 8px; border-radius:999px; font-size:12px}
+.pillrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0}
+.pill{background:rgba(0,0,0,.05); color:var(--muted); padding:4px 8px; border-radius:999px; font-size:12px}
+.muted{color:var(--muted)}
+.tiny{font-size:12px}
+.actions{display:flex; gap:8px; align-items:center; margin-top:8px}
+.stack{display:grid; gap:10px}
+
+.faq details{background:var(--panel); padding:12px 14px; border-radius:12px; margin:8px 0; border:1px solid rgba(0,0,0,.06)}
+.faq summary{cursor:pointer; font-weight:600}
+
+.footer{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:30px 0}
+.links{display:flex; gap:12px; flex-wrap:wrap}
+
+/* HARD-CENTER FALLBACK (in case any section misses .container) */
+header > .container,
+main > .container,
+footer > .container{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* small screens */
+@media (max-width:640px){
+  .form-row{grid-template-columns:1fr}
+}
